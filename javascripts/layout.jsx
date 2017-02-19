@@ -49,7 +49,7 @@ Layout.view = function(vnode) {
     <div id="root">
       <nav id="header" class="navbar navbar-light navbar-toggleable-md fixed-top bg-faded">
         <div class="container">
-          <a class="navbar-brand" href={"/"} oncreate={m.route.link}><b>Ruby</b><sup>Mithril version</sup></a>
+          <a class="navbar-brand" href={"/"} oncreate={m.route.link}><b>Ruby</b> China <sup>Mithril version</sup></a>
           <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#main-nav-menu">
             <span class="navbar-toggler-icon"></span>
           </button>
