@@ -1,0 +1,18 @@
+name: mithril-ruby_china
+version: 0.1.0
+
+authors:
+  - Saiga12 <aiasfina@hotmail.com>
+
+targets:
+  mithril-ruby_china:
+    main: src/mithril-ruby_china.cr
+
+crystal: 0.20.5
+
+dependencies:
+  kemal:
+    github: kemalcr/kemal
+    branch: master
+
+license: MIT
