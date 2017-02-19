@@ -3,6 +3,7 @@ const Layout   = require("./layout.jsx");
 const Topics   = require("./topics.jsx");
 const Topic    = require("./topic.jsx");
 const Replies  = require("./replies.jsx");
+const User     = require("./user.jsx");
 
 m.route(document.body, "/", {
   "/": {
@@ -36,6 +37,14 @@ m.route(document.body, "/", {
     },
     render: function() {
       return m(Layout, m(Topic, m(Replies)))
+    }
+  },
+  "/:login": {
+    onmatch: function(params) {
+      User.load(params.login);
+    },
+    render: function() {
+      return m(Layout, m(User))
     }
   }
 });
