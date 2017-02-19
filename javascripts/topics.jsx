@@ -3,12 +3,17 @@ const Utils = require('./utils.js')
 
 var Topics = {
   list: [],
-  loadList: function(type) {
-    type = type || 'last_actived';
+  loadList: function(type, node_id) {
+    var data = {}
+    data.type = type || 'last_actived';
+    if (node_id) {
+      data.node_id = node_id;
+    }
+
     m.request({
       method: 'GET',
       url: 'https://ruby-china.org/api/v3/topics.json',
-      data: {type: type}
+      data: data
     })
     .then(function(data) {
       Topics.list = data.topics;

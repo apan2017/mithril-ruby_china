@@ -17,7 +17,7 @@ Topic.load = function(id) {
 }
 
 Topic.renderTopicTitle = function(topic) {
-  return <h1><a title={topic.node_name} class="node-name" href={'/topics/' + topic.node_id} oncreate={m.route.link}>招聘</a> {topic.title}</h1>
+  return <h1><a title={topic.node_name} class="node-name" href={'/topics/node' + topic.node_id} oncreate={m.route.link}>{topic.node_name}</a> {topic.title}</h1>
 }
 
 Topic.renderTopicContent = function(topic, user, vnode) {

@@ -16,8 +16,14 @@ m.route(document.body, "/", {
   },
   "/topics/:type": {
     onmatch: function(params, path) {
+      var mdata;
+
       Layout.activePath(path);
-      Topics.loadList(params.type);
+      if (mdata = params.type.match(/node(\d+)/)) {
+        Topics.loadList(null, mdata[1]);
+      } else {
+        Topics.loadList(params.type);  
+      }
     },
     render: function() {
       return m(Layout, m(Topics))
