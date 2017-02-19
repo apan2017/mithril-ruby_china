@@ -19,6 +19,31 @@ Layout.linkClassName = function(linkPath) {
   return this.currentActivedPath === linkPath ? 'nav-link active' : 'nav-link';
 }
 
+Layout.renderLoginInfo = function() {
+  var currentUser = window.currentUser;
+
+  if (currentUser) {
+    return(
+      <ul class="nav navbar-nav my-2 my-lg-0">
+        <li class="nav-item">
+          <a class="user-avatar nav-link" href={"/" + currentUser.login} oncreate={m.route.link}>
+            <img class="avatar avatar-md media-object" src={currentUser.avatar_url} />
+          </a>
+        </li>
+        <li class="nav-item"><a href="#" class="nav-link">登出</a></li>
+      </ul>
+    )
+  } else {
+    return(
+      <ul class="nav navbar-nav my-2 my-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="/oauth">登录</a>
+        </li>
+      </ul>
+    )
+  }
+}
+
 Layout.view = function(vnode) {
   return(
     <div id="root">
@@ -34,9 +59,7 @@ Layout.view = function(vnode) {
                 return <li class="nav-item"><a className={Layout.linkClassName(key)} href={key} oncreate={m.route.link}>{Layout.paths[key]}</a></li>
               })}
             </ul>
-            <ul class="nav navbar-nav my-2 my-lg-0">
-              <li class="nav-item"><a class="nav-link" href="/oauth">登录</a></li>
-            </ul>
+            {Layout.renderLoginInfo()}
           </div>
         </div>
       </nav>
