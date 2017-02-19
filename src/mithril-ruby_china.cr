@@ -1,5 +1,8 @@
+require "kemal"
 require "./mithril-ruby_china/*"
 
-module Mithril::RubyChina
-  # TODO Put your code here
+get "/" do
+  render "src/views/index.ecr"
 end
+
+Kemal.run
