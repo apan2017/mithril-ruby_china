@@ -1,6 +1,8 @@
-const m = require("mithril");
-const Layout = require("./layout.jsx");
-const Topics = require("./topics.jsx");
+const m        = require("mithril");
+const Layout   = require("./layout.jsx");
+const Topics   = require("./topics.jsx");
+const Topic    = require("./topic.jsx");
+const Replies  = require("./replies.jsx");
 
 m.route(document.body, "/", {
   "/": {
@@ -19,6 +21,15 @@ m.route(document.body, "/", {
     },
     render: function() {
       return m(Layout, m(Topics))
+    }
+  },
+  "/topic/:id": {
+    onmatch: function(params) {
+      Topic.load(params.id);
+      Replies.loadList(params.id);
+    },
+    render: function() {
+      return m(Layout, m(Topic, m(Replies)))
     }
   }
 });

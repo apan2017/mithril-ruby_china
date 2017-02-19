@@ -1,4 +1,4 @@
-const m = require("mithril");
+const m     = require("mithril");
 const Utils = require('./utils.js')
 
 var Topics = {
@@ -50,7 +50,7 @@ Topics.view = function() {
                       <span class="likes"><i class="fa fa-heart"></i> {topic.likes_count}</span>
                     </td>
                     <td class="activity hidden-md-down">
-                      <time class="" datetime={topic.replied_at}>{Utils.dateFormatFromString(topic.replied_at)}</time>
+                      <time>{Utils.dateFormatFromString(topic.replied_at)}</time>
                     </td>
                   </tr>
                 )
