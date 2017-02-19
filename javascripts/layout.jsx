@@ -2,21 +2,37 @@ const m = require("mithril");
 
 var Layout = {};
 
+Layout.paths = {
+  '/': '社区',
+  '/topics/popular': '优质话题',
+  '/topics/no_reply': '无人问津',
+  '/topics/recent': '最新发布'
+}
+
+Layout.currentActivedPath = '/';
+
+Layout.activePath = function(path) {
+  this.currentActivedPath = path;
+}
+
+Layout.linkClassName = function(linkPath) {
+  return this.currentActivedPath === linkPath ? 'nav-link active' : 'nav-link';
+}
+
 Layout.view = function(vnode) {
   return(
-    <main>
+    <div id="root">
       <nav id="header" class="navbar navbar-light navbar-toggleable-md fixed-top bg-faded">
         <div class="container">
-          <a class="navbar-brand" href="/"><b>Ruby</b><sup>React version</sup></a>
+          <a class="navbar-brand" href={"/"} oncreate={m.route.link}><b>Ruby</b><sup>Mithril version</sup></a>
           <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#main-nav-menu">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="main-nav-menu">
             <ul class="nav navbar-nav main-nav mr-auto mt-2 mt-md-0">
-              <li class="nav-item"><a class="nav-link active" href="/">社区</a></li>
-              <li class="nav-item"><a class="nav-link" href="/topics/popular">优质话题</a></li>
-              <li class="nav-item"><a class="nav-link" href="/topics/no-reply">无人问津</a></li>
-              <li class="nav-item"><a class="nav-link" href="/topics/recent">最新发布</a></li>
+              {Object.keys(Layout.paths).map(function(key, index) {
+                return <li class="nav-item"><a className={Layout.linkClassName(key)} href={key} oncreate={m.route.link}>{Layout.paths[key]}</a></li>
+              })}
             </ul>
             <ul class="nav navbar-nav my-2 my-lg-0">
               <li class="nav-item"><a class="nav-link" href="/oauth">登录</a></li>
@@ -24,8 +40,8 @@ Layout.view = function(vnode) {
           </div>
         </div>
       </nav>
-      <div class="container">{vnode.children}</div>
-    </main>
+      <main id="main" class="main-layout">{vnode.children}</main>
+    </div>
   )
 }
 
