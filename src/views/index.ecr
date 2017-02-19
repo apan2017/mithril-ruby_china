@@ -1,9 +1,21 @@
 <html>
   <head>
     <link rel="stylesheet" href="/css/app.css"/>
+    <% if user_storage = env.session.object?("user") %>
+      <% user = user_storage.as(User) %>
+      <script type="text/javascript">
+        window.currentUser = {
+          id: <%= user.id %>,
+          name: '<%= user.name %>',
+          login: '<%= user.login %>',
+          email: '<%= user.email %>',
+          avatar_url: '<%= user.avatar_url %>'
+        }
+      </script>
+    <% end %>
   </head>
   <body>
-
+    <h1><%= user %></h1>
   </body>
   <script src="/js/bundle.js"></script>
 </html>

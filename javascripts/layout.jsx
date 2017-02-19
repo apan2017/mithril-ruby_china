@@ -19,7 +19,7 @@ Layout.view = function(vnode) {
               <li class="nav-item"><a class="nav-link" href="/topics/recent">最新发布</a></li>
             </ul>
             <ul class="nav navbar-nav my-2 my-lg-0">
-              <li class="nav-item"><a class="nav-link" href="/oauth/new">登录</a></li>
+              <li class="nav-item"><a class="nav-link" href="/oauth">登录</a></li>
             </ul>
           </div>
         </div>
