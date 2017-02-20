@@ -9,7 +9,7 @@ require "./user"
 client_id = "21a71f42"
 client_secret = "afa5a6bc038571650161e12d0cd8524f87a1689fb209a132a347d997830aa2fd"
 host_uri = "ruby-china.org"
-redirect_uri = "http://10.0.0.23:3000/oauth/callback"
+redirect_uri = "http://mithril-ruby-china.herokuapp.com/oauth/callback"
 authorize_uri = "/oauth/authorize"
 token_uri = "/oauth/token"
 oauth2_client = OAuth2::Client.new("ruby-china.org", client_id, client_secret, authorize_uri: authorize_uri, token_uri: token_uri, redirect_uri: redirect_uri)
