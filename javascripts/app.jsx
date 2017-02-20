@@ -36,7 +36,7 @@ m.route(document.body, "/", {
       Replies.loadList(params.id);
     },
     render: function() {
-      return m(Layout, m(Topic, m(Replies)))
+      return m(Layout, m(Topic))
     }
   },
   "/:login": {

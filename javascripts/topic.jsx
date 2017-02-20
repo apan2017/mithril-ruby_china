@@ -1,5 +1,6 @@
-const m     = require("mithril");
-const Utils = require('./utils.js')
+const m       = require("mithril");
+const Utils   = require('./utils.js');
+const Replies = require("./replies.jsx");
 
 var Topic = {};
 
@@ -20,7 +21,7 @@ Topic.renderTopicTitle = function(topic) {
   return <h1><a title={topic.node_name} class="node-name" href={'/topics/node' + topic.node_id} oncreate={m.route.link}>{topic.node_name}</a> {topic.title}</h1>
 }
 
-Topic.renderTopicContent = function(topic, user, vnode) {
+Topic.renderTopicContent = function(topic, user) {
   return(
     <div class="row">
       <div class="col-md-9">
@@ -43,7 +44,7 @@ Topic.renderTopicContent = function(topic, user, vnode) {
             </div>
           </div>
         </div>
-        {vnode.children}
+        {m(Replies)}
       </div>
       <div class="hidden-md-down col-md-3"></div>
     </div>
@@ -62,7 +63,7 @@ Topic.renderTopicFooter = function(topic) {
   )
 }
 
-Topic.view = function(vnode) {
+Topic.view = function() {
   if (!Topic.current) {
     return
   }
@@ -74,7 +75,7 @@ Topic.view = function(vnode) {
       <div class="topic-detail">
         {[
           Topic.renderTopicTitle(topic),
-          Topic.renderTopicContent(topic, topic.user, vnode)
+          Topic.renderTopicContent(topic, topic.user)
         ]}
       </div>
     </div>
