@@ -8,7 +8,7 @@ var babelify = require('babelify');
 
 
 gulp.task('browserify', function() {
-  browserify('./javascripts/app.jsx', { debug: true })
+  browserify('./javascripts/app.jsx')
     .transform(babelify)
     .bundle()
     .on("error", function (err) { console.log("Error : " + err.message); })
